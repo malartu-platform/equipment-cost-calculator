@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <style>
+    /* Basic styling for the calculator */
+    #calculator {
+      max-width: 300px;
+      margin: 0 auto;
+      font-family: Arial, sans-serif;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    #calculator h2 {
+      text-align: center;
+    }
+    #calculator input, #calculator button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    #calculator .result {
+      background-color: #f9f9f9;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+    #calculator .result p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="calculator">
+    <h2>Equipment Cost Calculator</h2>
+    <input type="number" id="equipmentCost" placeholder="Enter Equipment Cost" />
+    <button onclick="calculatePayments()">Calculate Payments</button>
+
+    <div id="results">
+      <!-- Monthly payment options will appear here -->
+    </div>
+  </div>
+
+  <script>
+    function calculatePayments() {
+      var equipmentCost = parseFloat(document.getElementById('equipmentCost').value);
+      if (isNaN(equipmentCost) || equipmentCost <= 0) {
+        alert('Please enter a valid equipment cost.');
+        return;
+      }
+
+      // Rate factors
+      var rateFactors = [0.04428, 0.0305, 0.0238, 0.01954];
+
+      var resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = ''; // Clear previous results
+
+      for (var i = 0; i < rateFactors.length; i++) {
+        var monthlyPayment = equipmentCost * rateFactors[i];
+        var result = document.createElement('div');
+        result.className = 'result';
+        result.innerHTML = '<p><strong>Monthly Payment Option ' + (i + 1) + ':</strong> $' + monthlyPayment.toFixed(2) + '</p>';
+        resultsDiv.appendChild(result);
+      }
+    }
+  </script>
+</body>
+</html>
