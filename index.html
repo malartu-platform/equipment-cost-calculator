@@ -115,6 +115,25 @@
             font-weight: 700;
         }
 
+        .start-application {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .start-application:hover {
+            background-color: #2980b9;
+        }
+
         @media (max-width: 480px) {
             .container {
                 margin: 0;
@@ -171,6 +190,13 @@
                 `;
                 resultsDiv.appendChild(resultCard);
             }
+
+            // Add "Start Application" button
+            const startApplicationButton = document.createElement('a');
+            startApplicationButton.href = 'https://app.fortifypay.com';
+            startApplicationButton.className = 'start-application';
+            startApplicationButton.textContent = 'Start Application';
+            resultsDiv.appendChild(startApplicationButton);
         }
     </script>
 </body>
