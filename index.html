@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
+            --primary-color: #001F39;
+            --secondary-color: #103262;
             --background-color: #f4f6f9;
             --text-color: #2c3e50;
             --border-radius: 8px;
@@ -173,12 +173,12 @@
 
             const rateFactors = [0.04428, 0.0305, 0.0238, 0.01954];
             const terms = [12, 24, 36, 48];
+            const interestRates = [6.43, 6.55, 6.99, 6.68];
             const resultsDiv = document.getElementById('results');
             resultsDiv.innerHTML = '';
 
             for (let i = 0; i < rateFactors.length; i++) {
                 const monthlyPayment = equipmentCost * rateFactors[i];
-                const totalCost = monthlyPayment * terms[i];
 
                 const resultCard = document.createElement('div');
                 resultCard.className = 'result-card';
@@ -186,7 +186,7 @@
                     <h3>Option ${i + 1}</h3>
                     <p><strong>Term:</strong> ${terms[i]} months</p>
                     <p><strong>Monthly Payment:</strong> $${monthlyPayment.toFixed(2)}</p>
-                    <p><strong>Total Cost:</strong> $${totalCost.toFixed(2)}</p>
+                    <p><strong>Interest Rate:</strong> ${interestRates[i]}%</p>
                 `;
                 resultsDiv.appendChild(resultCard);
             }
